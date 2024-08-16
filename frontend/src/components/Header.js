@@ -24,32 +24,50 @@ const Header = () => {
           </div>
           <ul className={`nav-links ${sidebarOpen ? 'open' : ''}`}>
             <li>
-              <NavLink to="/" activeClassName="active">
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => isActive ? "active" : ""}
+              >
                 <FontAwesomeIcon icon={faHome} /> Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/products" activeClassName="active">
+              <NavLink 
+                to="/products" 
+                className={({ isActive }) => isActive ? "active" : ""}
+              >
                 <FontAwesomeIcon icon={faBox} /> Products
               </NavLink>
             </li>
             <li>
-              <NavLink to="/notifications" activeClassName="active">
+              <NavLink 
+                to="/notifications" 
+                className={({ isActive }) => isActive ? "active" : ""}
+              >
                 <FontAwesomeIcon icon={faBell} /> Notifications
               </NavLink>
             </li>
             <li>
-              <NavLink to="/cart" activeClassName="active">
+              <NavLink 
+                to="/cart" 
+                className={({ isActive }) => isActive ? "active" : ""}
+              >
                 <FontAwesomeIcon icon={faShoppingCart} /> Cart
               </NavLink>
             </li>
             <li>
-              <NavLink to="/signin" activeClassName="active">
+              <NavLink 
+                to="/signin" 
+                className={({ isActive }) => isActive ? "active" : ""}
+              >
                 <FontAwesomeIcon icon={faUser} /> Sign In
               </NavLink>
             </li>
             <li>
-              <NavLink to="/signup" activeClassName="active">
+              <NavLink 
+                to="/signup" 
+                className={({ isActive }) => isActive ? "active" : ""}
+              >
                 <FontAwesomeIcon icon={faUser} /> Sign Up
               </NavLink>
             </li>
