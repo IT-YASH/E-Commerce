@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faBox, faBell, faShoppingCart, faUser, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FaHome, FaBox, FaBell, FaShoppingCart, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
@@ -20,7 +19,7 @@ const Header = () => {
             <h1 className="nav-logo">E-Commerce</h1>
           </div>
           <div className="hamburger" onClick={toggleSidebar}>
-            <FontAwesomeIcon icon={sidebarOpen ? faTimes : faBars} />
+            {sidebarOpen ? <FaTimes /> : <FaBars />}
           </div>
           <ul className={`nav-links ${sidebarOpen ? 'open' : ''}`}>
             <li>
@@ -28,7 +27,7 @@ const Header = () => {
                 to="/" 
                 className={({ isActive }) => isActive ? "active" : ""}
               >
-                <FontAwesomeIcon icon={faHome} /> Home
+                <FaHome /> Home
               </NavLink>
             </li>
             <li>
@@ -36,7 +35,7 @@ const Header = () => {
                 to="/products" 
                 className={({ isActive }) => isActive ? "active" : ""}
               >
-                <FontAwesomeIcon icon={faBox} /> Products
+                <FaBox /> Products
               </NavLink>
             </li>
             <li>
@@ -44,7 +43,7 @@ const Header = () => {
                 to="/notifications" 
                 className={({ isActive }) => isActive ? "active" : ""}
               >
-                <FontAwesomeIcon icon={faBell} /> Notifications
+                <FaBell /> Notifications
               </NavLink>
             </li>
             <li>
@@ -52,7 +51,7 @@ const Header = () => {
                 to="/cart" 
                 className={({ isActive }) => isActive ? "active" : ""}
               >
-                <FontAwesomeIcon icon={faShoppingCart} /> Cart
+                <FaShoppingCart /> Cart
               </NavLink>
             </li>
             <li>
@@ -60,7 +59,7 @@ const Header = () => {
                 to="/signin" 
                 className={({ isActive }) => isActive ? "active" : ""}
               >
-                <FontAwesomeIcon icon={faUser} /> Sign In
+                <FaUser /> Sign In
               </NavLink>
             </li>
             <li>
@@ -68,16 +67,16 @@ const Header = () => {
                 to="/signup" 
                 className={({ isActive }) => isActive ? "active" : ""}
               >
-                <FontAwesomeIcon icon={faUser} /> Sign Up
+                <FaUser /> Sign Up
               </NavLink>
             </li>
+          </ul>
             {userLoggedIn && (
               <div className="user-info">
                 <img className="user-photo" src={userPhoto} alt="User" />
                 <span className="user-name">{userName}</span>
               </div>
             )}
-          </ul>
         </nav>
       </header>
     </>

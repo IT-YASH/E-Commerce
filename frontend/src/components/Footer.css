@@ -1,36 +1,62 @@
 .footer {
-    background-color: #f8f8f8;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #ddd;
-  }
-  
-  .footer-logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-  }
-  
-  .footer-links {
-    display: flex;
-    gap: 40px;
-  }
-  
-  .footer-section h4 {
-    margin-bottom: 10px;
-    color: black;
-  }
-  
-  .footer-section ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .footer-section ul li {
-    margin-bottom: 5px;
-    color: black;
-  }
-  
+  background-color: #f8f8f8;
+  padding: 20px;
+  background-image: url('https://via.placeholder.com/1920x400?text=Footer+Background');
+  background-size: cover;
+  background-position: center;
+  border-top: 1px solid #ddd;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  color: black;
+}
+
+.footer-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+  color: black;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
