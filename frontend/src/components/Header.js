@@ -5,9 +5,9 @@ import './Header.css';
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const userLoggedIn = true; // Change this based on your authentication logic
-  const userPhoto = "https://via.placeholder.com/40"; // Replace with actual user photo URL
-  const userName = "Yash Patel"; // Replace with actual user name
+  const userLoggedIn = true; 
+  const userPhoto = "https://via.placeholder.com/40"; 
+  const userName = "Yash Patel"; 
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 

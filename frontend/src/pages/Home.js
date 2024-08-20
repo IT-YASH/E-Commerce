@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './Home.css';
 
 const images = [
@@ -72,6 +73,17 @@ const testimonials = [
     feedback: 'Incredible quality and flavor! Every product is crafted with perfection. I’ll definitely be coming back.',
     image: 'https://via.placeholder.com/100?text=Michael+Johnson'
   }
+];
+
+const userGrowthData = [
+  { month: 'Jan', users: 0 },
+  { month: 'Feb', users: 7 },
+  { month: 'Mar', users: 4 },
+  { month: 'Apr', users: 15 },
+  { month: 'May', users: 17 },
+  { month: 'Jun', users: 25 },
+  { month: 'Jul', users: 19 },
+  { month: 'Aug', users: 30 },
 ];
 
 const Home = () => {
@@ -149,6 +161,37 @@ const Home = () => {
         </p>
       </div>
     </section>
+
+    <section className="user-growth-section">
+        <div className="user-growth-info">
+          <h2>User Growth Over Time</h2>
+          <p>
+            Our platform has seen significant user growth over the past few months. This graph illustrates the 
+            steady increase in users, highlighting the success and expansion of our services. The data 
+            represents active users who have engaged with the platform, showcasing our ability to 
+            attract and retain a growing community.
+          </p>
+        </div>
+        <div className="user-growth-chart">
+          <ResponsiveContainer width="100%" height={400}>
+            <LineChart data={userGrowthData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Line 
+                type="monotone" 
+                dataKey="users" 
+                stroke="#8884d8" 
+                activeDot={{ r: 8 }} 
+                animationBegin={0} 
+                animationDuration={4000} 
+                animationEasing="ease-in-out"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </section>
 
     <section className="testimonials">
       <h2>What Our Customers Say</h2>
