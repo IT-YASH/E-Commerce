@@ -70,13 +70,13 @@ const Header = () => {
                 <FaUser /> Sign Up
               </NavLink>
             </li>
-          </ul>
             {userLoggedIn && (
               <div className="user-info">
                 <img className="user-photo" src={userPhoto} alt="User" />
                 <span className="user-name">{userName}</span>
               </div>
             )}
+          </ul>
         </nav>
       </header>
     </>
