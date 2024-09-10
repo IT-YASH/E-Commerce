@@ -77,7 +77,7 @@
 
 .product-card {
   min-width: 300px;
-  height: 300px; /* Increased height */
+  height: auto;
   margin: 0 15px;
   background: white;
   border-radius: 10px;

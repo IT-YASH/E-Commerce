@@ -8,7 +8,7 @@ const Products = () => {
   const [filtersVisible, setFiltersVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
-    priceRange: [0, 500],
+    priceRange: '',
     rating: 0,
     categories: []
   });
@@ -22,8 +22,7 @@ const Products = () => {
   };
 
   const handlePriceRangeChange = (e) => {
-    const value = e.target.value.split(',').map(Number);
-    setFilters(prevFilters => ({ ...prevFilters, priceRange: value }));
+    setFilters(prevFilters => ({ ...prevFilters, priceRange: e.target.value }));
   };
 
   const handleRatingChange = (e) => {
@@ -62,18 +61,39 @@ const Products = () => {
       description: 'Crispy and tasty farsan.',
       rating: 5,
       category: 'Farsan',
-      price: 200,
+      price: 700,
+    },
+    {
+      id: 3,
+      image: 'https://via.placeholder.com/300x300?text=Product+3',
+      name: 'Sweet 2',
+      description: 'Tasty sweet treat.',
+      rating: 5,
+      category: 'Sweet',
+      price: 1200,
     },
     // More products...
   ];
 
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    product.price >= filters.priceRange[0] &&
-    product.price <= filters.priceRange[1] &&
-    product.rating >= filters.rating &&
-    (filters.categories.length === 0 || filters.categories.includes(product.category))
-  );
+  const filteredProducts = products.filter(product => {
+    // Filter by search term
+    const inSearchTerm = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+    // Filter by price range
+    const inPriceRange = 
+      filters.priceRange === '' ||  // If no price range selected, include all
+      (filters.priceRange === '0-500' && product.price <= 500) ||
+      (filters.priceRange === '500-1000' && product.price > 500 && product.price <= 1000) ||
+      (filters.priceRange === '1000+' && product.price > 1000);
+
+    // Filter by rating
+    const inRating = product.rating >= filters.rating;
+
+    // Filter by category
+    const inCategory = filters.categories.length === 0 || filters.categories.includes(product.category);
+
+    return inSearchTerm && inPriceRange && inRating && inCategory;
+  });
 
   return (
     <div className="products-page">
@@ -99,15 +119,12 @@ const Products = () => {
             <h3>Filter Products</h3>
             <div className="filter-group">
               <label>Price Range:</label>
-              <input 
-                type="range" 
-                min="0" 
-                max="500" 
-                step="1"
-                onChange={handlePriceRangeChange}
-                value={filters.priceRange.join(',')}
-              />
-              <div>Range: ${filters.priceRange[0]} - ${filters.priceRange[1]}</div>
+              <select onChange={handlePriceRangeChange} value={filters.priceRange}>
+                <option value="">All</option>
+                <option value="0-500">0 - 500</option>
+                <option value="500-1000">500 - 1000</option>
+                <option value="1000+">1000+</option>
+              </select>
             </div>
             <div className="filter-group">
               <label>Rating:</label>
@@ -138,9 +155,13 @@ const Products = () => {
         )}
         
         <div className="products-list">
-          {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map(product => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          ) : (
+            <p>No products found.</p>
+          )}
         </div>
       </div>
     </div>
